@@ -45,11 +45,11 @@ class CoClust():
     -----------
 
     row_labels_ : array, length n_rows
-        Results of the clustering on rows. `rows[i]` is `c` if
+        Results of the clustering on rows. `row_labels_[i]` is `c` if
         row `i` is assigned to cluster `c`. Available only after calling ``fit``.
 
     column_labels : array, length n_columns
-        Results of the clustering on columns. `columns[i]` is `c` if
+        Results of the clustering on columns. `column_labels_[i]` is `c` if
         column `i` is assigned to cluster `c`. Available only after calling ``fit``.
 
     execution_time_ : float

@@ -7,8 +7,48 @@ from sklearn.preprocessing import LabelEncoder
 
 
 class CoClust():
-    """
-    Parameter-less co-clustering algorithm
+    """ Fast Tensor Co-clustering with denormalized Goodman-Kruskal's Tau (Battaglia et al., 2023).
+
+    CoStar is an algorithm created to deal with multi-view data.
+    It finds automatically the best number of row / column clusters.
+
+    Parameters
+    ------------
+
+    n_iterations : int, optional, default: 500
+        The maximum number of iterations to be performed.
+    
+    n_iter_per_mode : int, optional, default: 1
+        The maximum number of iterations per mode
+
+    init : {'discrete', 'extract_centroids'}, optional, default: 'random'
+        The initialization methods.
+
+    k: array of int, optional (default: [20,20,20])
+        The initial number of clusters per mode ([0,0,0] = discrete partition)
+    
+    verbose: bool, optional (default: False)
+        The verbosity of the algorithm
+    
+    random_state: int, opional (default: None)
+        The seed for the random numbers generator
+
+
+    Attributes
+    -----------
+
+    labels_ : ndarray, length items per mode
+        Results of the clustering on rows. `labels_[m][i]` is `c` if
+        item `i` in mode m is assigned to cluster `c`. Available only after calling ``fit``.
+
+    execution_time_ : float
+        The execution time.
+
+    References
+    ----------
+
+    * Battaglia E., et al., 2023. `Fast parameterless prototype-based co-clustering`
+        Machine Learning, 2023
 
     """
 
@@ -19,13 +59,16 @@ class CoClust():
         :type n_iterations: int
         :param n_iterations: the max number of iterations to perform
         :type n_iter_per_mode: int
-        :param n_iter_per_mode: the max number of sub-iterations for eac iteration and each mode
+        :param n_iter_per_mode: the max number of iterations per rows
         :type initialization: string
-        :param initialization: the initialization method, one of {'random', 'discrete', 'random_optimal', 'extract_centroids', 'customized'}
-        :type k: array-like of integers
-        :param k: number of clusters on each mode. 
+        :param initialization: the initialization method, default = 'extract_centroids'
+        :type k: array of int
+        :param k: number of initial clusters on all modes. 
         :type verbose: boolean
         :param verbose: if True, it prints details of the computations
+        :type random_state: int | None
+        :param random_state: random seed
+        
         """
         self._rng = np.random.default_rng(seed=random_state)
         self.n_iterations = n_iterations
