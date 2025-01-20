@@ -1,7 +1,5 @@
 # Fast-tauCC
-Source code for the paper "Fast parameterless prototype-based co-clustering", Mach. Learn. 113(4): 2153-2181 (2024), by Elena Battaglia, Federico Peiretti and Ruggero G. Pensa.
-
-[[paper]](https://link.springer.com/article/10.1007/s10994-023-06474-y)
+Source code for the paper "Fast parameterless prototype-based co-clustering", Mach. Learn. 113(4): 2153-2181 (2024), by Elena Battaglia, Federico Peiretti and Ruggero G. Pensa. [[paper]](https://link.springer.com/article/10.1007/s10994-023-06474-y)
 
 ## How to cite:
 ```
